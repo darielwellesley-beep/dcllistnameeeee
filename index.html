@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arbar-mylist</title>
+    <title>ARBAR STYLE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- CSS ส่วนตกแต่ง --- */
+        /* --- ตั้งค่าสีหลัก --- */
         :root {
             --bg-color: #050505;
-            --card-bg: #0f0f0f;
+            --card-bg: #121212; /* สีพื้นหลังการ์ดเข้มๆ */
             --text-main: #ffffff;
-            --text-sub: #a0a0a0;
+            --leader-color: #ff3333; /* สีแดงสำหรับ Leader */
+            --member-color: #9d00ff; /* สีม่วงสำหรับ Member */
             --accent-font: 'Orbitron', sans-serif;
         }
 
@@ -23,18 +24,11 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-
-            /* พื้นหลัง Particles */
+            /* พื้นหลังตารางจางๆ เหมือนในรูป */
             background-image: 
-                radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-                radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px, 90px 90px;
-            animation: particleMove 20s linear infinite;
-        }
-
-        @keyframes particleMove {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 0 60px, 0 180px; }
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .navbar { padding: 20px; }
@@ -50,137 +44,197 @@
             font-size: 0.9rem;
             transition: 0.3s;
         }
-        .home-btn:hover {
-            border-color: #fff;
-            box-shadow: 0 0 10px rgba(255,255,255,0.2);
-        }
+        .home-btn:hover { border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px; /* ขยายความกว้างเพื่อให้ใส่ 4 คนได้สวยๆ */
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
 
+        /* หัวข้อใหญ่ */
         h1.main-title {
             font-family: var(--accent-font);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+        
+        .sub-title {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
         }
 
+        /* ช่องค้นหา */
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 60px auto;
+        }
+        
         .search-box {
             background: #111;
             border: 1px solid #333;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 30px;
             color: white;
             width: 100%;
-            max-width: 400px;
-            display: block; 
-            margin: 0 auto 40px auto;
             text-align: center;
             font-family: var(--accent-font);
             outline: none;
+            box-sizing: border-box;
         }
-
-        h2.section-title {
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            background: white;
+            color: black;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
             font-family: var(--accent-font);
-            font-size: 1.5rem;
-            margin: 0 auto 30px auto; 
-            letter-spacing: 4px;
-            border-bottom: 2px solid #333;
-            display: inline-block;
-            padding-bottom: 5px;
+            font-size: 0.8rem;
         }
 
-        /* --- Grid 3 คอลัมน์ --- */
+        /* Grid System 4 คอลัมน์ */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 คนต่อบรรทัด */
-            gap: 20px;             
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 50px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 0 20px;
         }
 
-        /* --- การ์ดสมาชิก --- */
+        /* --- ดีไซน์การ์ดใหม่ (แนวตั้ง) --- */
         a.member-card {
             background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 40px 20px 20px 20px; /* เว้นด้านบนเยอะหน่อยให้รูปไม่ชน */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
             text-decoration: none;
             color: inherit;
-            cursor: pointer;
-            width: auto; 
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         a.member-card:hover {
-            border-color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+            border-color: #444;
         }
 
+        /* --- ป้ายยศ (Badge) ลอยด้านบน --- */
+        .rank-badge {
+            position: absolute;
+            top: -12px;
+            right: 30px; /* ปรับตำแหน่งป้าย */
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            font-family: var(--accent-font);
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* สีป้าย Leader */
+        .badge-leader {
+            background-color: var(--leader-color);
+            color: black; /* ตัวหนังสือสีดำจะอ่านง่ายบนพื้นแดง */
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+        }
+
+        /* สีป้าย Member */
+        .badge-member {
+            background-color: var(--member-color);
+            color: white;
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
+        }
+
+        /* รูปโปรไฟล์ */
         .member-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: scale-down;
-            margin-right: 15px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%; /* ยังคงเป็นวงกลม */
+            object-fit: scale-down; /* ให้เห็นโลโก้ชัดๆ */
+            margin-bottom: 15px;
+            background-color: #000;
             border: 2px solid #333;
-            background-color: #fff;
-            padding: 5px; 
-            box-sizing: border-box;
+            padding: 5px;
         }
 
-        .member-info {
-            text-align: left;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
+        /* ชื่อสมาชิก */
         .member-name {
             font-family: var(--accent-font);
             font-size: 1.1rem;
             font-weight: bold;
             margin-bottom: 5px;
             color: #fff;
-            display: block;
+            text-align: center;
         }
 
-        .member-display-link {
-            font-size: 0.85rem;
-            color: var(--text-sub);
+        /* ชื่อกลุ่ม */
+        .member-group {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* ตำแหน่งข้อความ (Leader/Member) */
+        .rank-text {
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .text-leader { color: var(--leader-color); text-shadow: 0 0 10px rgba(255, 51, 51, 0.3); }
+        .text-member { color: var(--member-color); text-shadow: 0 0 10px rgba(157, 0, 255, 0.3); }
+
+        /* ปุ่ม Facebook ด้านล่าง */
+        .fb-btn {
+            width: 80%;
+            padding: 10px 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 30px;
+            color: #aaa;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        a.member-card:hover .member-display-link {
-            color: #fff;
-            text-decoration: underline;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
         }
 
-        .member-display-link i { margin-right: 5px; }
+        a.member-card:hover .fb-btn {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
 
         /* Responsive */
         @media (max-width: 900px) {
             .members-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
         @media (max-width: 600px) {
-            h1.main-title { font-size: 1.8rem; }
+            h1.main-title { font-size: 2rem; }
             .members-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -192,145 +246,135 @@
     </div>
 
     <div class="container">
-        <h1 class="main-title">ARBAR REALLY</h1>
+        <h1 class="main-title">ARBAR STYLE</h1>
+        <div class="sub-title">@REAL ARBAR STAY ALONG 2026</div>
         
-        <input type="text" id="searchInput" class="search-box" placeholder="ค้นหาสมาชิก...">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="ค้นหาชื่อสมาชิก...">
+            <button class="search-btn">ค้นหา</button>
+        </div>
 
-        <h2 class="section-title">LEADER</h2>
         <div class="members-grid">
             
             <a href="https://www.facebook.com/ford.ford.999340" target="_blank" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
+                
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Ford Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                
+                <div class="member-name">Ford Arbar</div>
+                <div class="member-group">ARBAR</div>
+                
+                <div class="rank-text text-leader">LEADER</div>
+                
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/profile.phpiid1234571500267772/?locale=th_TH" target="_blank" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Manuel Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Manuel Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-leader">LEADER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/uno.kodomo" target="_blank" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Uno Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Uno Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-leader">LEADER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/VerTexzqwq?locale=th_TH" target="_blank" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">VerTexz Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">VerTexz Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-leader">LEADER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
-        </div>
 
-        <h2 class="section-title">MEMBERS</h2>
-        <div class="members-grid">
-            
             <a href="https://www.facebook.com/jay.arbar" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Jay Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Jay Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/mxndcons" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Mxnd Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Mxnd Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/madara.theynotlikeus" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Madara Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Madara Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/kiriw.arbar" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Kiriw Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Kiriw Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/lxmlnwza55" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Lxm Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Lxm Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/ju.ju.ju.825357" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Soyju Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Soyju Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/profile.php?id=61584707346681" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Tao Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Tao Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/jin.jin.729209" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Jin Arbar</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Jin Arbar</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="#" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-info">
-                    <span class="member-name">Test Test</span>
-                    <div class="member-display-link">
-                        <i class="fab fa-facebook"></i> CONTACT
-                    </div>
-                </div>
+                <div class="member-name">Test Test</div>
+                <div class="member-group">ARBAR</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
         </div> 
