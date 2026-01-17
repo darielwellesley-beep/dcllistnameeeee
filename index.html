@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arbar-mylist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS ส่วนตกแต่ง --- */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f0f0f;
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
+            --accent-font: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+
+            /* พื้นหลัง Particles */
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px, 90px 90px;
+            animation: particleMove 20s linear infinite;
+        }
+
+        @keyframes particleMove {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 0 60px, 0 180px; }
+        }
+
+        .navbar { padding: 20px; }
+        
+        .home-btn {
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: var(--accent-font);
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .home-btn:hover {
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1.main-title {
+            font-family: var(--accent-font);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .search-box {
+            background: #111;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            width: 100%;
+            max-width: 400px;
+            display: block; 
+            margin: 0 auto 40px auto;
+            text-align: center;
+            font-family: var(--accent-font);
+            outline: none;
+        }
+
+        h2.section-title {
+            font-family: var(--accent-font);
+            font-size: 1.5rem;
+            margin: 0 auto 30px auto; 
+            letter-spacing: 4px;
+            border-bottom: 2px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- Grid 3 คอลัมน์ --- */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 คนต่อบรรทัด */
+            gap: 20px;             
+            margin-bottom: 50px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- การ์ดสมาชิก --- */
+        a.member-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            width: auto; 
+        }
+
+        a.member-card:hover {
+            border-color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .member-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: scale-down;
+            margin-right: 15px;
+            border: 2px solid #333;
+            background-color: #fff;
+            padding: 5px; 
+            box-sizing: border-box;
+        }
+
+        .member-info {
+            text-align: left;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .member-name {
+            font-family: var(--accent-font);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+            display: block;
+        }
+
+        .member-display-link {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        a.member-card:hover .member-display-link {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .member-display-link i { margin-right: 5px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .members-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            h1.main-title { font-size: 1.8rem; }
+            .members-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="https://arbar.netlify.app/" class="home-btn">HOME</a>
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">ARBAR REALLY</h1>
+        
+        <input type="text" id="searchInput" class="search-box" placeholder="ค้นหาสมาชิก...">
+
+        <h2 class="section-title">LEADER</h2>
+        <div class="members-grid">
+            
+            <a href="https://www.facebook.com/ford.ford.999340" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Ford Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/profile.phpiid1234571500267772/?locale=th_TH" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Manuel Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/uno.kodomo" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Uno Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/VerTexzqwq?locale=th_TH" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">VerTexz Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <h2 class="section-title">MEMBERS</h2>
+        <div class="members-grid">
+            
+            <a href="https://www.facebook.com/jay.arbar" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Jay Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/mxndcons" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Mxnd Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/madara.theynotlikeus" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Madara Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/kiriw.arbar" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Kiriw Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/lxmlnwza55" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Lxm Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/ju.ju.ju.825357" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Soyju Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61584707346681" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Tao Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/jin.jin.729209" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Jin Arbar</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="member-card">
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-info">
+                    <span class="member-name">Test Test</span>
+                    <div class="member-display-link">
+                        <i class="fab fa-facebook"></i> CONTACT
+                    </div>
+                </div>
+            </a>
+
+        </div> 
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('keyup', function() {
+            const filter = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.member-card');
+            cards.forEach(card => {
+                const name = card.querySelector('.member-name').textContent.toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
