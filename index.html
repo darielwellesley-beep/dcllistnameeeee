@@ -16,6 +16,7 @@
             --text-sub: #666;
             --leader-color: #ff2b2b; /* สีแดงสำหรับ Leader */
             --member-color: #a44dff; /* สีม่วงสำหรับ Member */
+            --founder-color: #ffc800; /* สีเหลืองทองสำหรับ Founder */
             --accent-font: 'Orbitron', sans-serif;
         }
 
@@ -28,7 +29,6 @@
             overflow-x: hidden;
 
             /* --- พื้นหลังลายเรขาคณิต (ดำ-เทา) --- */
-            /* ใช้เทคนิค Gradient สร้างลายสามเหลี่ยม/สี่เหลี่ยมข้าวหลามตัด */
             background-image: 
                 linear-gradient(45deg, #131313 25%, transparent 25%, transparent 75%, #131313 75%),
                 linear-gradient(45deg, #131313 25%, transparent 25%, transparent 75%, #131313 75%);
@@ -174,6 +174,13 @@
             box-shadow: 0 0 10px rgba(164, 77, 255, 0.3);
         }
 
+        /* สีป้าย Founder (สีเหลือง) */
+        .badge-founder {
+            background-color: var(--founder-color);
+            color: black;
+            box-shadow: 0 0 10px rgba(255, 200, 0, 0.4);
+        }
+
         /* รูปโปรไฟล์ */
         .member-img {
             width: 90px;
@@ -216,6 +223,7 @@
         }
         .text-leader { color: var(--leader-color); }
         .text-member { color: var(--member-color); }
+        .text-founder { color: var(--founder-color); text-shadow: 0 0 10px rgba(255, 200, 0, 0.2); }
 
         /* ปุ่ม Facebook ยาวๆ ด้านล่าง */
         .fb-btn {
@@ -268,122 +276,246 @@
 
         <div class="members-grid">
             
-            <a href="https://www.facebook.com/Prxtyouknow.wtfdelta" class="member-card">
+            <a href="https://www.facebook.com/Prxtyouknow.wtfdelta" target="_blank" class="member-card">
                 <div class="rank-badge badge-founder"><i class="fas fa-crown"></i> FOUNDER</div>
                 
                 <img src="https://img2.pic.in.th/f7edfcdc-751a-449b-8bbf-45c93ab5c4b2.png" alt="Profile" class="member-img">
                 
                 <div class="member-name">Prxt Winterfell</div>
                 <div class="member-group">DCL'S</div>
-                <div class="rank-text text-leader">FOUNDER</div>
+                <div class="rank-text text-founder">FOUNDER</div>
                 
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/profile.phpiid1234571500267772/?locale=th_TH" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
+            <a href="https://www.facebook.com/gazel.aowpala" target="_blank" class="member-card">
+                <div class="rank-badge badge-founder"><i class="fas fa-crown"></i> FOUNDER</div>
+                
+                <img src="https://img2.pic.in.th/f7edfcdc-751a-449b-8bbf-45c93ab5c4b2.png" alt="Profile" class="member-img">
+                
+                <div class="member-name">Gazel Winterfell</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-founder">FOUNDER</div>
+                
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+
+            <a href="https://www.facebook.com/befxwtf" target="_blank" class="member-card">
+                <div class="rank-badge badge-founder"><i class="fas fa-crown"></i> FOUNDER</div>
+                
+                <img src="https://img2.pic.in.th/f7edfcdc-751a-449b-8bbf-45c93ab5c4b2.png" alt="Profile" class="member-img">
+                
+                <div class="member-name">Bef Winterfell</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-founder">FOUNDER</div>
+                
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/saturday.i.223550" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Manuel Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Elias Deacilion's </div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-leader">LEADER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/uno.kodomo" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
+            <a href="https://www.facebook.com/spin.winterfell.delta" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Uno Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Spin Daecilion's </div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-leader">LEADER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/VerTexzqwq?locale=th_TH" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
+            <a href="https://www.facebook.com/bryce.wtfxdelta" class="member-card">
+                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">VerTexz Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Dxys Daecilion's </div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-leader">LEADER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/jay.arbar" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/minebxst.idc" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Jay Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Fxil Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/mxndcons" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/methurr.winterfell.delta" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Mxnd Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Methur Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/madara.theynotlikeus" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/jasexyz" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Madara Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Brook Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/kiriw.arbar" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/share/1ADffJhBNx/?mibextid=wwXIfr" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Kiriw Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Pampam Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/lxmlnwza55" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/profile.php?id=61584447836487" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Lxm Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Akiz Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/ju.ju.ju.825357" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/suea.threethousand" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Soyju Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Jack Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/profile.php?id=61584707346681" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/jackie.reallive" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Tao Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Jackie Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="https://www.facebook.com/jin.jin.729209" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/justmin.winterfell.delta" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Jin Arbar</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Justmin Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
-            <a href="#" target="_blank" class="member-card">
+            <a href="https://www.facebook.com/Japan.Already" target="_blank" class="member-card">
                 <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                <div class="member-name">Test Test</div>
-                <div class="member-group">ARBAR</div>
+                <div class="member-name">Jxpan Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/Denim.Dcl" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Denim Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/koko.seawthagsoy" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Koko Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/king.unknxwprx" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Nongking Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/junior.way.895957" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Nongmeepu Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/myheart.wtfdelta" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Nongperq Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/wasdssdd" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Nongmilo Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/ph.th.ph.th.ph.th" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Pat Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/wxn.uzi" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Wxn Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/phonex.jrk" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Phonex Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/highflex.maimoo" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Flex Daecilion's</div>
+                <div class="member-group">DCL'S</div>
+                <div class="rank-text text-member">MEMBER</div>
+                <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
+            </a>
+
+            <a href="https://www.facebook.com/perce.wtfdelta" target="_blank" class="member-card">
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
+                <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                <div class="member-name">Perce Daecilion's</div>
+                <div class="member-group">DCL'S</div>
                 <div class="rank-text text-member">MEMBER</div>
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
