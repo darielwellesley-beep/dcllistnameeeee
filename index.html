@@ -10,11 +10,12 @@
     <style>
         /* --- ตั้งค่าสีหลัก --- */
         :root {
-            --bg-color: #050505;
-            --card-bg: #121212;
+            --bg-color: #080808;
+            --card-bg: #111111;
             --text-main: #ffffff;
-            --leader-color: #ff3333;
-            --member-color: #9d00ff;
+            --text-sub: #666;
+            --leader-color: #ff2b2b; /* สีแดงสำหรับ Leader */
+            --member-color: #a44dff; /* สีม่วงสำหรับ Member */
             --accent-font: 'Orbitron', sans-serif;
         }
 
@@ -25,248 +26,228 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            position: relative;
+
+            /* --- พื้นหลังลายเรขาคณิต (ดำ-เทา) --- */
+            /* ใช้เทคนิค Gradient สร้างลายสามเหลี่ยม/สี่เหลี่ยมข้าวหลามตัด */
+            background-image: 
+                linear-gradient(45deg, #131313 25%, transparent 25%, transparent 75%, #131313 75%),
+                linear-gradient(45deg, #131313 25%, transparent 25%, transparent 75%, #131313 75%);
+            background-position: 0 0, 25px 25px;
+            background-size: 50px 50px;
+            /* เพิ่มเงาจางๆ ตรงกลางให้ดูมีมิติ */
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+            min-height: 100vh;
         }
 
-        /* --- พื้นหลังคลื่นทะเล (Ocean Wave Animation) --- */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* สร้างเลเยอร์คลื่น 3 ชั้นซ้อนกัน */
-            background: 
-                radial-gradient(circle at 50% 120%, rgba(0, 100, 255, 0.1), transparent 70%),
-                linear-gradient(45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%),
-                linear-gradient(-45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%);
-            background-size: 100% 100%, 60px 60px, 60px 60px;
-            animation: oceanFlow 10s linear infinite;
-        }
-
-        /* เอฟเฟกต์แสงเงาคลื่นเพิ่มเติม */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 40px,
-                rgba(0, 255, 200, 0.02) 40px,
-                rgba(0, 255, 200, 0.02) 80px
-            );
-            animation: shimmer 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes oceanFlow {
-            0% { background-position: 50% 120%, 0 0, 0 0; }
-            100% { background-position: 50% 120%, 60px 60px, -60px 60px; }
-        }
-
-        @keyframes shimmer {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.6; transform: scale(1.05); }
-        }
-
-        .navbar { padding: 20px; }
+        .navbar { padding: 20px; text-align: left; }
         
         .home-btn {
-            background: #111;
-            border: 1px solid #333;
+            background: #222;
+            border: 1px solid #444;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 25px;
             text-decoration: none;
             font-family: var(--accent-font);
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 0.9rem;
             transition: 0.3s;
+            display: inline-block;
         }
-        .home-btn:hover { border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        .home-btn:hover { background: #333; border-color: #fff; }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
 
+        /* หัวข้อใหญ่ */
         h1.main-title {
             font-family: var(--accent-font);
             font-size: 3rem;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
         
         .sub-title {
-            color: #666;
+            color: var(--text-sub);
             margin-bottom: 40px;
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
+        /* ช่องค้นหา */
         .search-container {
             position: relative;
-            max-width: 500px;
-            margin: 0 auto 60px auto;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            gap: 10px;
         }
         
         .search-box {
-            background: #111;
+            background: #1a1a1a;
             border: 1px solid #333;
             padding: 12px 20px;
             border-radius: 30px;
             color: white;
             width: 100%;
-            text-align: center;
-            font-family: var(--accent-font);
+            font-family: 'Roboto', sans-serif;
             outline: none;
-            box-sizing: border-box;
+            flex-grow: 1;
         }
         
         .search-btn {
-            position: absolute;
-            right: 5px;
-            top: 3px;
             background: white;
             color: black;
             border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 0 25px;
+            border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-family: var(--accent-font);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
+        .search-btn:hover { background: #ddd; }
 
+        /* Grid System */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* ปรับขนาดให้พอดีเหมือนในรูป */
+            gap: 25px;
             margin-bottom: 50px;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
+        /* --- การ์ดสมาชิก (สไตล์ใหม่) --- */
         a.member-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 20px 20px 20px;
+            border-radius: 15px; /* มุมมน */
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
             color: inherit;
-            position: relative;
+            position: relative; /* เพื่อให้ป้ายยศลอยได้ */
             transition: all 0.3s ease;
             border: 1px solid #222;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         a.member-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: #444;
+            background: #161616;
         }
 
+        /* --- ป้ายยศ (Badge) มุมขวาบน --- */
         .rank-badge {
             position: absolute;
-            top: -12px;
-            right: 30px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            top: 15px;
+            right: 15px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: bold;
             font-family: var(--accent-font);
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
+        /* สีป้าย Leader */
         .badge-leader {
             background-color: var(--leader-color);
-            color: black;
-            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 43, 43, 0.3);
         }
 
+        /* สีป้าย Member */
         .badge-member {
             background-color: var(--member-color);
             color: white;
-            box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
+            box-shadow: 0 0 10px rgba(164, 77, 255, 0.3);
         }
 
+        /* รูปโปรไฟล์ */
         .member-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            border-radius: 15px; /* รูปเป็นสี่เหลี่ยมมนๆ */
             object-fit: scale-down;
+            margin-top: 15px;
             margin-bottom: 15px;
             background-color: #000;
-            border: 2px solid #333;
+            border: 1px solid #333;
             padding: 5px;
         }
 
+        /* ชื่อสมาชิก */
         .member-name {
             font-family: var(--accent-font);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             margin-bottom: 5px;
             color: #fff;
             text-align: center;
         }
 
+        /* ชื่อกลุ่ม */
         .member-group {
             font-size: 0.8rem;
-            color: #888;
+            color: var(--text-sub);
             margin-bottom: 5px;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
+        /* ข้อความยศ (ใต้ชื่อกลุ่ม) */
         .rank-text {
             font-size: 0.7rem;
             font-weight: bold;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 25px; /* เว้นระยะห่างจากปุ่ม */
             text-transform: uppercase;
         }
-        .text-leader { color: var(--leader-color); text-shadow: 0 0 10px rgba(255, 51, 51, 0.3); }
-        .text-member { color: var(--member-color); text-shadow: 0 0 10px rgba(157, 0, 255, 0.3); }
+        .text-leader { color: var(--leader-color); }
+        .text-member { color: var(--member-color); }
 
+        /* ปุ่ม Facebook ยาวๆ ด้านล่าง */
         .fb-btn {
-            width: 80%;
-            padding: 10px 0;
+            width: 100%;
+            padding: 12px 0;
             background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 30px;
-            color: #aaa;
-            font-size: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            color: #ccc;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             transition: 0.3s;
+            font-weight: 500;
         }
 
         a.member-card:hover .fb-btn {
             background: #fff;
             color: #000;
-            border-color: #fff;
         }
 
+        /* Responsive */
         @media (max-width: 900px) {
             .members-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 600px) {
-            h1.main-title { font-size: 2rem; }
+            h1.main-title { font-size: 2.2rem; }
             .members-grid { grid-template-columns: 1fr; }
+            .search-container { flex-direction: column; }
+            .search-btn { padding: 10px; width: 100%; }
         }
     </style>
 </head>
@@ -288,16 +269,19 @@
         <div class="members-grid">
             
             <a href="https://www.facebook.com/ford.ford.999340" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
+                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
+                
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
+                
                 <div class="member-name">Ford Arbar</div>
                 <div class="member-group">ARBAR</div>
                 <div class="rank-text text-leader">LEADER</div>
+                
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
             <a href="https://www.facebook.com/profile.phpiid1234571500267772/?locale=th_TH" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
+                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Manuel Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -306,7 +290,7 @@
             </a>
 
             <a href="https://www.facebook.com/uno.kodomo" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
+                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Uno Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -315,7 +299,7 @@
             </a>
 
             <a href="https://www.facebook.com/VerTexzqwq?locale=th_TH" target="_blank" class="member-card">
-                <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
+                <div class="rank-badge badge-leader"><i class="fas fa-crown"></i> LEADER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">VerTexz Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -324,7 +308,7 @@
             </a>
 
             <a href="https://www.facebook.com/jay.arbar" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Jay Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -333,7 +317,7 @@
             </a>
 
             <a href="https://www.facebook.com/mxndcons" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Mxnd Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -342,7 +326,7 @@
             </a>
 
             <a href="https://www.facebook.com/madara.theynotlikeus" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Madara Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -351,7 +335,7 @@
             </a>
 
             <a href="https://www.facebook.com/kiriw.arbar" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Kiriw Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -360,7 +344,7 @@
             </a>
 
             <a href="https://www.facebook.com/lxmlnwza55" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Lxm Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -369,7 +353,7 @@
             </a>
 
             <a href="https://www.facebook.com/ju.ju.ju.825357" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Soyju Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -378,7 +362,7 @@
             </a>
 
             <a href="https://www.facebook.com/profile.php?id=61584707346681" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Tao Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -387,7 +371,7 @@
             </a>
 
             <a href="https://www.facebook.com/jin.jin.729209" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Jin Arbar</div>
                 <div class="member-group">ARBAR</div>
@@ -396,7 +380,7 @@
             </a>
 
             <a href="#" target="_blank" class="member-card">
-                <div class="rank-badge badge-member"><i class="fas fa-shield-alt"></i> MEMBER</div>
+                <div class="rank-badge badge-member"><i class="fas fa-user"></i> MEMBER</div>
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
                 <div class="member-name">Test Test</div>
                 <div class="member-group">ARBAR</div>
