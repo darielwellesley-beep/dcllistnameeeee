@@ -11,10 +11,10 @@
         /* --- ตั้งค่าสีหลัก --- */
         :root {
             --bg-color: #050505;
-            --card-bg: #121212; /* สีพื้นหลังการ์ดเข้มๆ */
+            --card-bg: #121212;
             --text-main: #ffffff;
-            --leader-color: #ff3333; /* สีแดงสำหรับ Leader */
-            --member-color: #9d00ff; /* สีม่วงสำหรับ Member */
+            --leader-color: #ff3333;
+            --member-color: #9d00ff;
             --accent-font: 'Orbitron', sans-serif;
         }
 
@@ -24,11 +24,55 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            /* พื้นหลังตารางจางๆ เหมือนในรูป */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- พื้นหลังคลื่นทะเล (Ocean Wave Animation) --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* สร้างเลเยอร์คลื่น 3 ชั้นซ้อนกัน */
+            background: 
+                radial-gradient(circle at 50% 120%, rgba(0, 100, 255, 0.1), transparent 70%),
+                linear-gradient(45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%),
+                linear-gradient(-45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%);
+            background-size: 100% 100%, 60px 60px, 60px 60px;
+            animation: oceanFlow 10s linear infinite;
+        }
+
+        /* เอฟเฟกต์แสงเงาคลื่นเพิ่มเติม */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(0, 255, 200, 0.02) 40px,
+                rgba(0, 255, 200, 0.02) 80px
+            );
+            animation: shimmer 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes oceanFlow {
+            0% { background-position: 50% 120%, 0 0, 0 0; }
+            100% { background-position: 50% 120%, 60px 60px, -60px 60px; }
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(1.05); }
         }
 
         .navbar { padding: 20px; }
@@ -47,13 +91,12 @@
         .home-btn:hover { border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
 
         .container {
-            max-width: 1400px; /* ขยายความกว้างเพื่อให้ใส่ 4 คนได้สวยๆ */
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
 
-        /* หัวข้อใหญ่ */
         h1.main-title {
             font-family: var(--accent-font);
             font-size: 3rem;
@@ -70,7 +113,6 @@
             letter-spacing: 2px;
         }
 
-        /* ช่องค้นหา */
         .search-container {
             position: relative;
             max-width: 500px;
@@ -105,7 +147,6 @@
             font-size: 0.8rem;
         }
 
-        /* Grid System 4 คอลัมน์ */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -114,11 +155,10 @@
             padding: 0 20px;
         }
 
-        /* --- ดีไซน์การ์ดใหม่ (แนวตั้ง) --- */
         a.member-card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 40px 20px 20px 20px; /* เว้นด้านบนเยอะหน่อยให้รูปไม่ชน */
+            padding: 40px 20px 20px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -135,11 +175,10 @@
             border-color: #444;
         }
 
-        /* --- ป้ายยศ (Badge) ลอยด้านบน --- */
         .rank-badge {
             position: absolute;
             top: -12px;
-            right: 30px; /* ปรับตำแหน่งป้าย */
+            right: 30px;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.7rem;
@@ -152,33 +191,29 @@
             gap: 5px;
         }
 
-        /* สีป้าย Leader */
         .badge-leader {
             background-color: var(--leader-color);
-            color: black; /* ตัวหนังสือสีดำจะอ่านง่ายบนพื้นแดง */
+            color: black;
             box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
         }
 
-        /* สีป้าย Member */
         .badge-member {
             background-color: var(--member-color);
             color: white;
             box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
         }
 
-        /* รูปโปรไฟล์ */
         .member-img {
             width: 80px;
             height: 80px;
-            border-radius: 50%; /* ยังคงเป็นวงกลม */
-            object-fit: scale-down; /* ให้เห็นโลโก้ชัดๆ */
+            border-radius: 50%;
+            object-fit: scale-down;
             margin-bottom: 15px;
             background-color: #000;
             border: 2px solid #333;
             padding: 5px;
         }
 
-        /* ชื่อสมาชิก */
         .member-name {
             font-family: var(--accent-font);
             font-size: 1.1rem;
@@ -188,7 +223,6 @@
             text-align: center;
         }
 
-        /* ชื่อกลุ่ม */
         .member-group {
             font-size: 0.8rem;
             color: #888;
@@ -196,7 +230,6 @@
             letter-spacing: 1px;
         }
 
-        /* ตำแหน่งข้อความ (Leader/Member) */
         .rank-text {
             font-size: 0.7rem;
             font-weight: bold;
@@ -207,7 +240,6 @@
         .text-leader { color: var(--leader-color); text-shadow: 0 0 10px rgba(255, 51, 51, 0.3); }
         .text-member { color: var(--member-color); text-shadow: 0 0 10px rgba(157, 0, 255, 0.3); }
 
-        /* ปุ่ม Facebook ด้านล่าง */
         .fb-btn {
             width: 80%;
             padding: 10px 0;
@@ -229,7 +261,6 @@
             border-color: #fff;
         }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .members-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -258,14 +289,10 @@
             
             <a href="https://www.facebook.com/ford.ford.999340" target="_blank" class="member-card">
                 <div class="rank-badge badge-leader"><i class="fas fa-star"></i> LEADER</div>
-                
                 <img src="https://huge-violet-94i0z55znk.edgeone.app/ar.png" alt="Profile" class="member-img">
-                
                 <div class="member-name">Ford Arbar</div>
                 <div class="member-group">ARBAR</div>
-                
                 <div class="rank-text text-leader">LEADER</div>
-                
                 <div class="fb-btn"><i class="fab fa-facebook-f"></i> Facebook</div>
             </a>
 
